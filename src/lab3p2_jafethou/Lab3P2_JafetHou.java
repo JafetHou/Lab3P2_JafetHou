@@ -51,26 +51,8 @@ public class Lab3P2_JafetHou {
     }
     public static ArrayList crear(ArrayList <Pokemon> pokemones){
         String tipo ="";
-        System.out.println("Que tipo de pokemon desea agregar\n"
-                + "1) Fire\n"
-                + "2) Water\n"
-                + "3) Grass\n");
-        
-        int num = lea.nextInt();
-        
-        if(num == 1){
-            tipo = "Fire";
-            System.out.println("Ingrese poder de ataque: ");
-            int ataque = lea.nextInt();
-            
-        }else if(num == 2){
-            tipo = "Water";
-        }else if(num == 3){
-            tipo = "Grass";
-        }else{
-            System.out.println("Numero incorrecto ingrese nuevamente ");
-            crear(pokemones);
-        }
+        int ataque = 0;
+        boolean nada = false;
         
         System.out.println("Ingrese su nombre: ");
         String nombre = scanner.nextLine();
@@ -81,7 +63,50 @@ public class Lab3P2_JafetHou {
         System.out.println("Ingrese la naturaleza del pokemon: ");
         String naturaleza = scanner.nextLine();
         
-        pokemones.add((Fuego) new Fuego(
+        System.out.println("Que tipo de pokemon desea agregar\n"
+                + "1) Fire\n"
+                + "2) Water\n"
+                + "3) Grass\n");
+        
+        int num = lea.nextInt();
+        
+        if(num == 1){
+            tipo = "Fire";
+            System.out.println("Ingrese poder de ataque: ");
+            ataque = lea.nextInt();
+            
+            pokemones.add((Fuego) new Fuego(ataque, tipo, nombre, pokedex, naturaleza, true));
+            
+        }else if(num == 2){
+            tipo = "Water";
+            
+            System.out.println("Ingrese si puede vivir en el agua [si/no]: ");
+            String vivir = scanner.nextLine();
+            
+            if(vivir.equalsIgnoreCase("si")){
+                nada = true;
+            }else{
+                nada = false;
+            }
+            
+            System.out.println("ingrese la velocidad en el agua: ");
+            int velocidad = lea.nextInt();
+            
+            pokemones.add((Agua) new Agua(nada, velocidad, tipo, nombre, pokedex, naturaleza, false));
+            
+            
+        }else if(num == 3){
+            tipo = "Grass";
+            
+            
+            
+        }else{
+            System.out.println("Numero incorrecto ingrese nuevamente ");
+            crear(pokemones);
+        }
+        
+
+        
         
     return pokemones;
     }

@@ -21,7 +21,7 @@ public class Pokemon {
         this.naturaleza = naturaleza;
         this.atrapado = atrapado;
     }
-    
+        
 
     
     
