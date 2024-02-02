@@ -11,6 +11,20 @@ public class Pokemon {
     boolean atrapado;
     String pokebola;
 
+    public Pokemon() {
+    }
+
+    public Pokemon(String tipo, String nombre, int pokedex, String naturaleza, boolean atrapado) {
+        this.tipo = tipo;
+        this.nombre = nombre;
+        this.pokedex = pokedex;
+        this.naturaleza = naturaleza;
+        this.atrapado = atrapado;
+    }
+    
+
+    
+    
     public Pokemon(String tipo, String nombre, int pokedex, String naturaleza, boolean atrapado, String pokebola) {
         this.tipo = tipo;
         this.nombre = nombre;

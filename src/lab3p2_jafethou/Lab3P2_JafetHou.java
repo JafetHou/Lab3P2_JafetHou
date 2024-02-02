@@ -35,6 +35,10 @@ public class Lab3P2_JafetHou {
                     
                     break;
                 }
+                case 2:{
+                    
+                    break;
+                }
                 case 7:{
                     seguir = false;
                     break;
@@ -46,7 +50,7 @@ public class Lab3P2_JafetHou {
         
     }
     public static ArrayList crear(ArrayList <Pokemon> pokemones){
-        
+        String tipo ="";
         System.out.println("Que tipo de pokemon desea agregar\n"
                 + "1) Fire\n"
                 + "2) Water\n"
@@ -55,13 +59,16 @@ public class Lab3P2_JafetHou {
         int num = lea.nextInt();
         
         if(num == 1){
-            String tipo = "Fire";
+            tipo = "Fire";
+            System.out.println("Ingrese poder de ataque: ");
+            int ataque = lea.nextInt();
+            
         }else if(num == 2){
-            String tipo = "Water";
+            tipo = "Water";
         }else if(num == 3){
-            String tipo = "Grass";
+            tipo = "Grass";
         }else{
-            System.out.println("Numero incorrecto ingrese nuevamente: ");
+            System.out.println("Numero incorrecto ingrese nuevamente ");
             crear(pokemones);
         }
         
@@ -74,7 +81,7 @@ public class Lab3P2_JafetHou {
         System.out.println("Ingrese la naturaleza del pokemon: ");
         String naturaleza = scanner.nextLine();
         
-        pokemones.add((Pokemon) new Pokemon(nombre, nombre, pokedex, naturaleza, false, ""));
+        pokemones.add((Fuego) new Fuego(
         
     return pokemones;
     }
