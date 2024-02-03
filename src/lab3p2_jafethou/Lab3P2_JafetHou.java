@@ -285,21 +285,44 @@ public class Lab3P2_JafetHou {
         }
     }
     
-    public static void capturar(ArrayList <Pokemon> pokemones, ArrayList <Pokebola> pokebolas){
+    public static ArrayList capturar(ArrayList <Pokemon> pokemones, ArrayList <Pokebola> pokebolas){
         
         int i = 0;  
+        int random = 1+ran.nextInt(3);
         
         for (Pokebola p : pokebolas) {
                 
             System.out.println(i+") "+ p.toString());
             i=i+1;
         }
+        
+        System.out.println("Ingrese el numero de pokebola que desea usar: ");
+        int numpokebola = lea.nextInt();
+           
         int num = ran.nextInt(pokemones.size());
         System.out.println(num);
-        
-        
+        System.out.println("random: "+random);
         
         System.out.println("EL POKEMON "+pokemones.get(num).nombre+" HA APARECIDO");
+        
+        System.out.println("Desea 1) capturar o 2) huir: ");
+        int opc = lea.nextInt();
+        
+        if(opc == 1){
+            if(pokebolas.get(numpokebola).getEficiencia()>=random){
+                System.out.println("Pokemon atrapado");
+                pokemones.get(num).setAtrapado(true);
+                pokebolas.remove(numpokebola);
+                
+            }else{
+                System.out.println("Pokemon no atrapado");
+                pokebolas.remove(numpokebola);
+            }
+            
+        }else if(opc == 2){
+            return pokemones;
+        }
+    }
         
         
     }
