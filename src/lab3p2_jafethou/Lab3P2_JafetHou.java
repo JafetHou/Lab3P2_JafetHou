@@ -2,12 +2,14 @@ package lab3p2_jafethou;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Lab3P2_JafetHou {
 
     static Scanner lea = new Scanner (System.in);
     static Scanner leer = new Scanner (System.in);
     static Scanner scanner = new Scanner (System.in);
+    static Random ran = new Random ();
     
     public static void main(String[] args) {
         
@@ -62,6 +64,20 @@ public class Lab3P2_JafetHou {
                     
                     break;
                 }
+                
+                case 5:{
+                    
+                    if(pokemones.size()>0 && pokebolas.size() > 0){
+                        
+                        capturar(pokemones,pokebolas);
+                        
+                    }else{
+                        System.out.println("Faltan pokebolas o pokemones que agregar");
+                    }
+                    
+                    break;
+                }
+                
                 case 7:{
                     seguir = false;
                     break;
@@ -74,6 +90,7 @@ public class Lab3P2_JafetHou {
     }
     
     public static ArrayList crear(ArrayList <Pokemon> pokemones){
+        
         String tipo ="";
         int ataque = 0;
         boolean nada = false;
@@ -190,6 +207,7 @@ public class Lab3P2_JafetHou {
             
         }
     }
+    
     public static void eliminar(ArrayList <Pokemon> pokemones){
         
         String tipo = "";
@@ -216,21 +234,74 @@ public class Lab3P2_JafetHou {
             for (Pokemon p: pokemones) {
                 if(p.getTipo().equals(tipo)){
                     System.out.println(i+") "+ p.toString());
+                    i = i+1;
                 }
             }
             
             System.out.println("Ingrese el numero de pokedex del pokemon a eliminar: ");
             int indice = lea.nextInt();
             
-            for (Pokemon p : pokemones) {
+            if(indice == 0 || indice>= 0 && indice <= i){
+            
+                if(tipo.equalsIgnoreCase("Fire") ){
+                    
+                    for (Pokemon p : pokemones) {
+                        
+                        if (pokemones.get(indice) instanceof Fuego) {
+                            
+                            pokemones.remove(indice);
+                            
+                        }
+                    }
                 
-                if(p.getPokedex() == indice){
+                
+                }else if(tipo.equalsIgnoreCase("Water") ){
                     
-                    pokemones.remove(i);
+                    for (Pokemon p : pokemones) {
+                        
+                        if (pokemones.get(indice) instanceof Agua) {
+                            
+                            pokemones.remove(indice);
+                            
+                        }
+                    }
+                
+                
+                }else if(tipo.equalsIgnoreCase("Grass") ){
                     
+                    for (Pokemon p : pokemones) {
+                        
+                        if (pokemones.get(indice) instanceof Planta) {
+                            
+                            pokemones.remove(indice);
+                            
+                        }
+                    }
                 }
+
+            }else{
+                System.out.println("Ingreso un indice fuera de lugar ");
             }
         }
+    }
+    
+    public static void capturar(ArrayList <Pokemon> pokemones, ArrayList <Pokebola> pokebolas){
+        
+        int i = 0;  
+        
+        for (Pokebola p : pokebolas) {
+                
+            System.out.println(i+") "+ p.toString());
+            i=i+1;
+        }
+        int num = ran.nextInt(pokemones.size());
+        System.out.println(num);
+        
+        
+        
+        System.out.println("EL POKEMON "+pokemones.get(num).nombre+" HA APARECIDO");
+        
+        
     }
     
 }
