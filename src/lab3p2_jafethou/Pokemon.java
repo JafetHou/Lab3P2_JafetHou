@@ -4,12 +4,12 @@ package lab3p2_jafethou;
 
 public class Pokemon {
     
-    String tipo;
-    String nombre;
-    int pokedex;
-    String naturaleza;
-    boolean atrapado;
-    String pokebola;
+    protected String tipo;
+    protected String nombre;
+    protected int pokedex;
+    protected String naturaleza;
+    protected boolean atrapado;
+    protected String pokebola;
 
     public Pokemon() {
     }
@@ -84,7 +84,7 @@ public class Pokemon {
 
     @Override
     public String toString() {
-        return "Pokemon{" + " nombre: " + nombre + ", tipo: " + tipo + ", pokedex: " + pokedex + ", naturaleza: " + naturaleza + ", atrapado: " + atrapado + ", pokebola: " + pokebola + '}';
+        return "Pokemon{" + " nombre: " + nombre + ", tipo: " + tipo + ", pokedex: " + pokedex + ", naturaleza: " + naturaleza + ", atrapado: " + atrapado + ", pokebola: " + pokebola + ' ';
     }
     
     

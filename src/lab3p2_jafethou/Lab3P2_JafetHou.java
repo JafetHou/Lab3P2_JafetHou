@@ -12,6 +12,7 @@ public class Lab3P2_JafetHou {
     public static void main(String[] args) {
         
         ArrayList <Pokemon> pokemones  = new ArrayList();
+        ArrayList <Pokebola> pokebolas  = new ArrayList();
         
         boolean seguir = true;
         
@@ -37,6 +38,28 @@ public class Lab3P2_JafetHou {
                 }
                 case 2:{
                     
+                    agregarpokebola(pokebolas);
+                    
+                    break;
+                }
+                case 3:{
+                    
+                    if(pokemones.size() > 0){
+                        
+                        listar(pokemones);
+                        
+                    }
+                    
+                    break;
+                }
+                case 4:{
+                    
+                    if(pokemones.size() > 0){
+                        
+                        eliminar(pokemones);
+                    
+                    }
+                    
                     break;
                 }
                 case 7:{
@@ -49,6 +72,7 @@ public class Lab3P2_JafetHou {
         
         
     }
+    
     public static ArrayList crear(ArrayList <Pokemon> pokemones){
         String tipo ="";
         int ataque = 0;
@@ -75,7 +99,7 @@ public class Lab3P2_JafetHou {
             System.out.println("Ingrese poder de ataque: ");
             ataque = lea.nextInt();
             
-            pokemones.add((Fuego) new Fuego(ataque, tipo, nombre, pokedex, naturaleza, true));
+            pokemones.add((Fuego) new Fuego(ataque, tipo, nombre, pokedex, naturaleza, false));
             
         }else if(num == 2){
             tipo = "Water";
@@ -98,17 +122,115 @@ public class Lab3P2_JafetHou {
         }else if(num == 3){
             tipo = "Grass";
             
+            System.out.println("Ingrese el nombre de su habitat: ");
+            String habitat = scanner.nextLine();
             
+            System.out.println("Ingrese su dominio sobre plantas [0-100]: ");
+            int dominio = lea.nextInt();
+            
+            if(dominio>=0 && dominio<=100){
+                pokemones.add((Planta) new Planta(habitat, dominio, tipo, nombre, pokedex, naturaleza, false));
+            }else{
+                System.out.println("numero de dominio incorrecto ");
+            }
             
         }else{
             System.out.println("Numero incorrecto ingrese nuevamente ");
             crear(pokemones);
         }
+           
+        return pokemones;
+    }
+    
+    public static ArrayList agregarpokebola(ArrayList <Pokebola> pokebolas){
         
-
+        System.out.println("Ingrese el color de la pokebola: ");
+        String color = scanner.nextLine();
         
+        System.out.println("Iingrese numero de serie de la pokebola: ");
+        int serie = lea.nextInt();
         
-    return pokemones;
+        System.out.println("Ingrese su numero de eficiencia del [1-3]: ");
+        int num = lea.nextInt();
+        
+        if(num >= 1 && num <= 3){
+            
+            pokebolas.add((Pokebola) new Pokebola(color, serie, num));
+            
+        }else{
+            
+            System.out.println("Numero de eficiencia equivocado");
+        
+        }
+        
+        return pokebolas;
+    }
+    
+    public static void listar(ArrayList <Pokemon> pokemones){
+        int i = 1;
+        for (Pokemon p : pokemones) {
+            if(p.getTipo().equalsIgnoreCase("Fire")){
+                System.out.println(i+") "+p.toString());
+                i=i+1;
+            }
+            
+        }
+        for (Pokemon p : pokemones) {
+            if(p.getTipo().equalsIgnoreCase("Water")){
+                System.out.println(i+") "+p.toString());
+                i=i+1;
+            }
+            
+        }
+        for (Pokemon p : pokemones) {
+            if(p.getTipo().equalsIgnoreCase("Grass")){
+                System.out.println(i+") "+p.toString());
+                i=i+1;
+            }
+            
+        }
+    }
+    public static void eliminar(ArrayList <Pokemon> pokemones){
+        
+        String tipo = "";
+        
+        System.out.println("Ingrese el tipo de pokemon a eliminar: \n"
+                + "1) Fire\n"
+                + "2) Water\n"
+                + "3) Grass\n");
+        
+        int num = lea.nextInt();
+        
+        if(num == 1){
+            tipo = "Fire";
+        }else if(num == 2){
+            tipo = "Water";
+        }else if (num == 3){
+            tipo = "Grass";
+        }else{
+            System.out.println("Numero Incorrecto");
+        }
+        
+        if(tipo != ""){
+            int i = 0;
+            for (Pokemon p: pokemones) {
+                if(p.getTipo().equals(tipo)){
+                    System.out.println(i+") "+ p.toString());
+                }
+            }
+            
+            System.out.println("Ingrese el numero de pokedex del pokemon a eliminar: ");
+            int indice = lea.nextInt();
+            
+            for (Pokemon p : pokemones) {
+                
+                if(p.getPokedex() == indice){
+                    
+                    pokemones.remove(i);
+                    
+                }
+            }
+        }
     }
     
 }

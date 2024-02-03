@@ -4,8 +4,8 @@ package lab3p2_jafethou;
 
 public class Planta extends Pokemon{
     
-    private String habitat;
-    private int dominio;
+    protected String habitat;
+    protected int dominio;
 
     public Planta(String habitat, int dominio, String tipo, String nombre, int pokedex, String naturaleza, boolean atrapado) {
         super(tipo, nombre, pokedex, naturaleza, atrapado);
@@ -27,6 +27,11 @@ public class Planta extends Pokemon{
 
     public void setDominio(int dominio) {
         this.dominio = dominio;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", habitat: " + habitat + ", dominio: " + dominio + '}';
     }
     
     

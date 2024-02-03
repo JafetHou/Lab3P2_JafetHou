@@ -4,11 +4,11 @@ package lab3p2_jafethou;
 
 public class Agua extends Pokemon{
     
-    private boolean nada;
-    private int velocidad;
+    protected boolean nada;
+    protected int velocidad;
 
     public Agua(boolean nada, int velocidad, String tipo, String nombre, int pokedex, String naturaleza, boolean atrapado) {
-        super(tipo, nombre, pokedex, naturaleza, atrapado, pokebola);
+        super(tipo, nombre, pokedex, naturaleza, atrapado);
         this.nada = nada;
         this.velocidad = velocidad;
     }
@@ -27,6 +27,19 @@ public class Agua extends Pokemon{
 
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
+    }
+    
+    public String nadar(){
+        if(nada == true){
+            return "si";
+        }else{
+            return "no";
+        }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", nadar: " + nadar() + ", velocidad: " + velocidad + '}';
     }
     
     
